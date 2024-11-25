@@ -27,7 +27,7 @@ createConnection();
 ipcMain.handle('scrapeEcommerceSite', async() => {
     const driver = await new Builder().forBrowser('chrome').build();
     try {
-        await driver.get('https://www.reliablechef.com');
+        await driver.get('https://www.reliablechef.com/customized-chef-coats');
 
         await driver.sleep(5000);
 
@@ -38,7 +38,7 @@ ipcMain.handle('scrapeEcommerceSite', async() => {
                 let styleCode = await product.findElement(By.css('.product-cat')).getText();
                 styleCode = styleCode.split('\n')[0];
 
-                let price = await product.findElement(By.css('.product-price.m-0')).getText();
+                let price = await product.findElement(By.css('.product-price')).getText();
                 price = price.split('\n')[0];
 
                 let name = await product.findElement(By.css('.product-title a')).getText();
